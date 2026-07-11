@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nearby Bites Finder</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🍜 Nearby Bites Finder</h1>
+    <p class="subtitle">Find food near you, right now.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <button id="locate-btn">📍 Use My Location</button>
+      <div class="manual-location">
+        <input id="place-input" type="text" placeholder="...or type a city/address" />
+        <button id="place-btn">Search</button>
+      </div>
+
+      <div class="filters" id="filters" hidden>
+        <label><input type="checkbox" value="restaurant" checked> Restaurants</label>
+        <label><input type="checkbox" value="cafe" checked> Cafes</label>
+        <label><input type="checkbox" value="fast_food" checked> Fast Food</label>
+        <label><input type="checkbox" value="bar" checked> Bars</label>
+        <label>
+          Radius:
+          <select id="radius-select">
+            <option value="500">500 m</option>
+            <option value="1000" selected>1 km</option>
+            <option value="2000">2 km</option>
+            <option value="5000">5 km</option>
+          </select>
+        </label>
+        <button id="surprise-btn">🎲 Surprise Me</button>
+      </div>
+    </section>
+
+    <div id="status" class="status"></div>
+
+    <section class="content" id="content" hidden>
+      <div id="map"></div>
+      <ul id="results"></ul>
+    </section>
+  </main>
+
+  <div id="surprise-modal" class="modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close">×</button>
+      <p class="modal-label">You should eat at...</p>
+      <h2 id="surprise-name"></h2>
+      <p id="surprise-meta"></p>
+      <button id="reroll-btn">🎲 Reroll</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+:root {
+  --bg: #fdf8f3;
+  --ink: #2b2320;
+  --accent: #e8622c;
+  --accent-dark: #c94e1e;
+  --card: #ffffff;
+  --border: #ecdfd3;
+  --muted: #8a7b6f;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0.25rem 0 0;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.manual-location {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+button:hover { background: var(--accent-dark); }
+button:active { transform: scale(0.97); }
+
+#place-btn { background: var(--ink); }
+#place-btn:hover { background: #000; }
+
+input[type="text"] {
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  min-width: 220px;
+}
+
+.filters {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+}
+
+#surprise-btn {
+  background: #2b2320;
+}
+#surprise-btn:hover { background: #000; }
+
+.status {
+  text-align: center;
+  color: var(--muted);
+  padding: 1rem;
+  min-height: 1.2rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 720px) {
+  .content { grid-template-columns: 1fr; }
+}
+
+#map {
+  height: 420px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+#results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 420px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+#results li {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+}
+
+#results li:hover {
+  border-color: var(--accent);
+  transform: translateX(2px);
+}
+
+#results li.active {
+  border-color: var(--accent);
+  background: #fff3ec;
+}
+
+.result-name {
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+}
+
+.result-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-block;
+  background: #f3e9df;
+  color: var(--accent-dark);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 15, 10, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal-card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 2rem;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.modal-label {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modal-card h2 {
+  margin: 0.4rem 0 0.6rem;
+  font-size: 1.6rem;
+}
+
+#surprise-meta {
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.4rem;
+  padding: 0.2rem 0.6rem;
+  line-height: 1;
+}
+.modal-close:hover { background: var(--border); color: var(--ink); }
